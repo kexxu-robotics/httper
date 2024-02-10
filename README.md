@@ -4,21 +4,21 @@ Http helper functions for Golang
 ## Respond
 
 Respond Status 'Success'
-```
+```go
 http.HandleFunc(r *http.Request, w http.ResponseWriter){
     httper.RespondSuccess(w)
 }
 ```
 
 Respond Status
-```
+```go
 http.HandleFunc(r *http.Request, w http.ResponseWriter){
     httper.RespondStatus(w, "processing")
 }
 ```
 
 Respond with JSON
-```
+```go
 http.HandleFunc(r *http.Request, w http.ResponseWriter){
     car := Car{ Wheels: 4 }
     httper.RespondJson(w, car)
@@ -28,7 +28,7 @@ http.HandleFunc(r *http.Request, w http.ResponseWriter){
 ## Input
 
 Get values from a GET parameter or POST form
-```
+```go
 http.HandleFunc(r *http.Request, w http.ResponseWriter){
 
     // get an int
@@ -53,7 +53,7 @@ http.HandleFunc(r *http.Request, w http.ResponseWriter){
 
 Get json from POST body
 
-```
+```go
 http.HandleFunc(r *http.Request, w http.ResponseWriter){
     
     // basic settings, 1mb max, allow unknown fields    
