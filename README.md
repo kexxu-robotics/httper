@@ -1,5 +1,8 @@
-# httper
+httper
+===
 Http helper functions for Golang
+
+![tests](https://github.com/kexxu-robotics/httper/actions/workflows/go.yml/badge.svg)
 
 ## Respond
 
