@@ -61,7 +61,7 @@ http.HandleFunc(r *http.Request, w http.ResponseWriter){
     
     // basic settings, 1mb max, allow unknown fields    
     car := Car{}
-    err := httper.GetJsonBodyDefault(w, r, car)
+    err := httper.GetJsonBodyDefault(r, w, &car)
     if err != nil {
         return
     }
@@ -70,7 +70,7 @@ http.HandleFunc(r *http.Request, w http.ResponseWriter){
     // max 1024 bytes (1kb)
     // don't allow unknown fields (fields not in Train{})
     train := Train{}
-    err := httper.GetJsonBody(w, r, train, 1024, false)
+    err := httper.GetJsonBody(r, w, &train, 1024, false)
     if err != nil {
         return
     }

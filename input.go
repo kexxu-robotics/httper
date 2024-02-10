@@ -47,12 +47,12 @@ func CheckFormString(r *http.Request, w http.ResponseWriter, key string) (string
 	return value, nil
 }
 
-func GetJsonBodyDefault(w http.ResponseWriter, r *http.Request, v any) error {
+func GetJsonBodyDefault(r *http.Request, w http.ResponseWriter, v any) error {
 	maxBytes := int64(1048576) // 1mb
-	return GetJsonBody(w, r, v, maxBytes, true)
+	return GetJsonBody(r, w, v, maxBytes, true)
 }
 
-func GetJsonBody(w http.ResponseWriter, r *http.Request, v any, maxBytes int64, allowUnknownFields bool) error {
+func GetJsonBody(r *http.Request, w http.ResponseWriter, v any, maxBytes int64, allowUnknownFields bool) error {
 
 	// If the Content-Type header is present, check that it has the value
 	// application/json. Note that we parse and normalize the header to remove
