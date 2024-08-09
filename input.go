@@ -47,6 +47,14 @@ func CheckFormString(r *http.Request, w http.ResponseWriter, key string) (string
 	return value, nil
 }
 
+func CheckFormStringDefault(r *http.Request, w http.ResponseWriter, key string, defaultValue string) string {
+	value := r.FormValue(key)
+	if value == "" {
+		return defaultValue
+	}
+	return value
+}
+
 func GetJsonBodyDefault(r *http.Request, w http.ResponseWriter, v any) error {
 	maxBytes := int64(1048576) // 1mb
 	return GetJsonBody(r, w, v, maxBytes, true)
