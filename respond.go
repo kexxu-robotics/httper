@@ -22,3 +22,11 @@ func RespondJson(w http.ResponseWriter, v any) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(js)
 }
+
+func RespondJsonGzipped(w http.ResponseWriter, v any) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Encoding", "gzip")
+	gw := gzip.NewWriter(w)
+	defer gw.Close()
+	json.NewEncoder(gw).Encode(v)
+}

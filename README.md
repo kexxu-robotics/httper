@@ -28,6 +28,15 @@ http.HandleFunc(r *http.Request, w http.ResponseWriter){
 }
 ```
 
+Respond with JSON gzipped, reducing network load for larger responses
+```go
+http.HandleFunc(r *http.Request, w http.ResponseWriter){
+    car := Car{ Wheels: 4 }
+    httper.RespondJsonGzipped(w, car)
+}
+```
+
+
 ## Input
 
 Get values from a GET parameter or POST form
@@ -51,6 +60,10 @@ http.HandleFunc(r *http.Request, w http.ResponseWriter){
     if err != nil {
         return
     }
+
+    // get string with default fallback
+    remarks := httper.CheckFormStringDefault(r, w, "remarks", "No remarks")
+
 }
 ```
 
