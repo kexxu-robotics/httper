@@ -24,6 +24,19 @@ func CheckFormInt64(r *http.Request, w http.ResponseWriter, key string) (int64, 
 	return intValue, nil
 }
 
+func GetFormInt64(r *http.Request, w http.ResponseWriter, key string, defaultValue int64) (int64, error) {
+	value := r.FormValue(key)
+	if value == "" {
+		return defaultValue, nil
+	}
+	intValue, err := strconv.ParseInt(value, 10, 64)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("please provide a valid integer for key '%s'", key), 400)
+		return 0, err
+	}
+	return intValue, nil
+}
+
 func CheckFormInt(r *http.Request, w http.ResponseWriter, key string) (int, error) {
 	value := r.FormValue(key)
 	if value == "" {
